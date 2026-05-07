@@ -271,3 +271,28 @@ footer {
     color: white;
     padding-left: 5px;
 }
+
+/* Clickable Card Pattern */
+.vehicle-card {
+    position: relative;
+    transition: var(--transition-base);
+}
+
+.vehicle-card:hover {
+    transform: translateY(-10px);
+}
+
+.stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: "";
+}
+
+.vehicle-card .btn {
+    position: relative;
+    z-index: 2; /* Keep actual buttons on top */
+}

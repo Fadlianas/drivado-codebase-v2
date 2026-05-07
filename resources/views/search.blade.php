@@ -106,7 +106,7 @@
                                 <p class="text-secondary small mb-3"><i class="bi bi-shop me-1"></i> {{ $vehicle->agency->agency_name }}</p>
                                 
                                 <div class="d-flex gap-2">
-                                    <a href="{{ url('/vehicle/'.$vehicle->id) }}" class="btn btn-dark w-100 fw-bold py-2">DETAILS</a>
+                                    <a href="{{ url('/vehicle/'.$vehicle->id) }}" class="btn btn-dark w-100 fw-bold py-2 stretched-link">DETAILS</a>
                                 </div>
                             </div>
                         </div>

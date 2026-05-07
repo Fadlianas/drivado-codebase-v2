@@ -98,8 +98,7 @@
                             </div>
 
                             <div class="d-flex gap-2">
-                                <a href="{{ url('/vehicle/'.$vehicle->id) }}" class="btn btn-dark w-100 fw-bold">BOOK NOW</a>
-                                <a href="{{ url('/vehicle/'.$vehicle->id) }}" class="btn btn-outline-dark p-2" title="View Details"><i class="bi bi-eye"></i></a>
+                                <a href="{{ url('/vehicle/'.$vehicle->id) }}" class="btn btn-dark w-100 fw-bold stretched-link">BOOK NOW</a>
                             </div>
                         </div>
                     </div>

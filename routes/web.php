@@ -7,6 +7,8 @@ use App\Models\Vehicle;
 use App\Http\Controllers\BookingController;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AgencyController;
 
 Route::get('/', function () {
     $vehicles = Vehicle::with('agency')->where('is_available', true)->take(3)->get();
@@ -35,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
 // Agency Routes
 Route::middleware(['auth', 'role:agency'])->group(function () {
     Route::get('/agency/pending', function() {
-        return "Your agency account is pending approval by the administrator.";
+        return view('agency.pending');
     })->name('agency.pending');
 
     Route::middleware(['approved_agency'])->group(function () {

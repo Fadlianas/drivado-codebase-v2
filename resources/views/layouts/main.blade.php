@@ -31,15 +31,50 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::is('search*') ? 'active' : '' }}" href="{{ url('/search') }}">Fleet</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::is('how-it-works') ? 'active' : '' }}" href="{{ route('how-it-works') }}">How it Works</a>
-                    </li>
+                    @auth
+                        @if(Auth::user()->role === 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">Overview</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('admin/agencies*') ? 'active' : '' }}" href="{{ route('admin.agencies') }}">Agencies</a>
+                            </li>
+                            <li class="nav-item ms-lg-3">
+                                <a class="btn btn-outline-light btn-sm px-3 opacity-75" href="{{ url('/') }}">View Marketplace</a>
+                            </li>
+                        @elseif(Auth::user()->role === 'agency')
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('agency/dashboard') ? 'active' : '' }}" href="{{ route('agency.dashboard') }}">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('agency/vehicles*') ? 'active' : '' }}" href="{{ route('agency.vehicles') }}">My Fleet</a>
+                            </li>
+                            <li class="nav-item ms-lg-3">
+                                <a class="btn btn-outline-light btn-sm px-3 opacity-75" href="{{ url('/') }}">View Marketplace</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('search*') ? 'active' : '' }}" href="{{ url('/search') }}">Fleet</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('how-it-works') ? 'active' : '' }}" href="{{ route('how-it-works') }}">How it Works</a>
+                            </li>
+                        @endif
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('search*') ? 'active' : '' }}" href="{{ url('/search') }}">Fleet</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('how-it-works') ? 'active' : '' }}" href="{{ route('how-it-works') }}">How it Works</a>
+                        </li>
+                    @endauth
+
                     @guest
                         <li class="nav-item ms-lg-4">
                             <a class="nav-link" href="{{ route('login') }}">Sign In</a>

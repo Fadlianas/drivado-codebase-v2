@@ -116,11 +116,13 @@
             </div>
             <div class="col-lg-6 text-center">
                 <div class="bg-dark text-white p-5 rounded-5 shadow-lg position-relative overflow-hidden">
-                    <h3 class="fw-bold mb-4">Start Selling Today</h3>
-                    <p class="opacity-75 mb-5">It takes less than 10 minutes to register your agency and list your first vehicle.</p>
-                    <a href="{{ route('register') }}" class="btn btn-premium px-5 py-3 fw-bold">JOIN AS AN AGENCY</a>
+                    <div class="position-relative z-1">
+                        <h3 class="fw-bold mb-4">Start Selling Today</h3>
+                        <p class="opacity-75 mb-5">It takes less than 10 minutes to register your agency and list your first vehicle.</p>
+                        <a href="{{ route('register') }}" class="btn btn-premium px-5 py-3 fw-bold">JOIN AS AN AGENCY</a>
+                    </div>
                     
-                    <i class="bi bi-shop position-absolute bottom-0 end-0 opacity-10" style="font-size: 15rem; transform: rotate(-20deg);"></i>
+                    <i class="bi bi-shop position-absolute" style="font-size: 12rem; transform: rotate(-20deg); bottom: -2rem; right: -2rem; opacity: 0.05; z-index: 0;"></i>
                 </div>
             </div>
         </div>

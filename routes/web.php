@@ -15,6 +15,9 @@ Route::get('/', function () {
 
 Route::get('/search', [BookingController::class, 'search']);
 Route::get('/vehicle/{id}', [BookingController::class, 'show']);
+Route::get('/how-it-works', function () {
+    return view('how-it-works');
+})->name('how-it-works');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

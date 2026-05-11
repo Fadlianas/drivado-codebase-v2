@@ -38,7 +38,7 @@
                         <a class="nav-link {{ Request::is('search*') ? 'active' : '' }}" href="{{ url('/search') }}">Fleet</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">How it Works</a>
+                        <a class="nav-link {{ Request::is('how-it-works') ? 'active' : '' }}" href="{{ route('how-it-works') }}">How it Works</a>
                     </li>
                     @guest
                         <li class="nav-item ms-lg-4">

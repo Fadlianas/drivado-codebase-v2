@@ -7,7 +7,7 @@
             <div class="card border-0 shadow-sm p-4 p-md-5">
                 <div class="text-center mb-5">
                     <h2 class="fw-bold">Welcome Back</h2>
-                    <p class="text-secondary">Login to your Drivaro account</p>
+                    <p class="text-secondary">Login to your Drivado account</p>
                 </div>
 
                 @if(session('error'))

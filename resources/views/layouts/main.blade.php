@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DRIVARO - The premium car rental marketplace for luxury and daily drives.">
-    <title>{{ config('app.name', 'DRIVARO') }} | Premium Car Rental Marketplace</title>
+    <meta name="description" content="DRIVADO - The premium car rental marketplace for luxury and daily drives.">
+    <title>{{ config('app.name', 'DRIVADO') }} | Premium Car Rental Marketplace</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,8 +23,10 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                <i class="bi bi-gear-wide-connected me-2"></i>
-                <span>DRIVARO</span>
+                <div class="logo-container d-flex align-items-center">
+                    <img src="{{ asset('images/logo.png') }}" alt="DRIVADO Logo" class="logo-car-img me-3">
+                    <span class="logo-text">DRIVADO</span>
+                </div>
             </a>
             <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <i class="bi bi-list fs-1"></i>
@@ -80,7 +82,7 @@
                             <a class="nav-link" href="{{ route('login') }}">Sign In</a>
                         </li>
                         <li class="nav-item ms-lg-2">
-                            <a class="btn btn-premium px-4" href="{{ route('register') }}">Join Drivaro</a>
+                            <a class="btn btn-premium px-4" href="{{ route('register') }}">Join Drivado</a>
                         </li>
                     @else
                         <li class="nav-item dropdown ms-lg-4">
@@ -124,11 +126,13 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-4">
-                    <div class="footer-logo d-flex align-items-center">
-                        <i class="bi bi-gear-wide-connected me-2"></i>
-                        <span>DRIVARO</span>
+                    <div class="footer-logo d-flex align-items-center mb-4">
+                        <div class="logo-container d-flex align-items-center">
+                            <img src="{{ asset('images/logo.png') }}" alt="DRIVADO Logo" class="logo-car-img-footer me-3">
+                            <span class="logo-text-footer">DRIVADO</span>
+                        </div>
                     </div>
-                    <p class="text-secondary mb-4">DRIVARO is the leading marketplace for car rental agencies and users to connect in a secure, professional, and transparent environment.</p>
+                    <p class="text-secondary mb-4">DRIVADO is the leading marketplace for car rental agencies and users to connect in a secure, professional, and transparent environment.</p>
                     <div class="d-flex gap-3">
                         <a href="#" class="btn btn-outline-light btn-sm rounded-circle p-2"><i class="bi bi-facebook fs-5"></i></a>
                         <a href="#" class="btn btn-outline-light btn-sm rounded-circle p-2"><i class="bi bi-instagram fs-5"></i></a>
@@ -157,7 +161,7 @@
             </div>
             <hr class="my-5 opacity-10">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-secondary small">
-                <p class="mb-0">&copy; {{ date('Y') }} DRIVARO Platform. All rights reserved.</p>
+                <p class="mb-0">&copy; {{ date('Y') }} DRIVADO Platform. All rights reserved.</p>
                 <div class="mt-3 mt-md-0">
                     <span class="me-3">ENSAO MGSI-3 Project</span>
                     <span>v1.0 Premium</span>

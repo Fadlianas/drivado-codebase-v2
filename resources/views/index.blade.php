@@ -145,7 +145,7 @@
     <div class="container py-5 text-center position-relative z-1 text-white">
         <h2 class="section-title mb-4">Are you a Car Rental Agency?</h2>
         <p class="lead mb-5 opacity-75" style="max-width: 700px; margin: 0 auto;">Join the region's fastest-growing car rental marketplace and start reaching thousands of customers today.</p>
-        <a href="{{ route('register') }}" class="btn btn-premium px-5 py-3 fw-bold">LIST YOUR FLEET ON DRIVARO</a>
+        <a href="{{ route('register') }}" class="btn btn-premium px-5 py-3 fw-bold">LIST YOUR FLEET ON DRIVADO</a>
     </div>
 </section>
 

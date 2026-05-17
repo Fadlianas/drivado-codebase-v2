@@ -1,4 +1,4 @@
-/* DRIVARO PREMIUM DESIGN SYSTEM */
+/* DRIVADO PREMIUM DESIGN SYSTEM */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
@@ -57,9 +57,17 @@ body {
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    padding: 0.6rem 0;
+    padding: 0.4rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.logo-main {
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar.scrolled .logo-main {
+    height: 32px;
 }
 
 .dropdown-menu {
@@ -73,6 +81,62 @@ body {
 @keyframes fadeInDropdown {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    transition: var(--transition-base);
+}
+
+.logo-car-img {
+    height: 45px;
+    width: auto;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    mix-blend-mode: screen;
+    filter: brightness(1.2) contrast(1.1);
+}
+
+.logo-text {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.25rem;
+    background: linear-gradient(135deg, #FFFFFF 0%, #E8E8E8 50%, #C0C0C0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    line-height: 1;
+}
+
+.navbar.scrolled .logo-car-img {
+    height: 35px;
+}
+
+.navbar.scrolled .logo-text {
+    font-size: 1.3rem;
+    letter-spacing: 0.15rem;
+}
+
+.logo-car-img-footer {
+    height: 55px;
+    width: auto;
+    mix-blend-mode: screen;
+    filter: brightness(1.2) contrast(1.1);
+}
+
+.logo-text-footer {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 0.3rem;
+    background: linear-gradient(135deg, #FFFFFF 0%, #E8E8E8 50%, #C0C0C0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    line-height: 1;
 }
 
 .navbar-brand {

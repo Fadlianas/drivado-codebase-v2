@@ -13,7 +13,7 @@
             <span class="badge rounded-pill bg-white text-dark fw-bold px-3 py-2 animate__animated animate__fadeInDown">TRANSPARENT & SECURE</span>
         </div>
         <h1 class="hero-title mb-4 animate__animated animate__fadeInUp" style="font-size: 4rem;">Renting Made <br><span class="text-secondary">Remarkable.</span></h1>
-        <p class="lead mb-0 opacity-75 animate__animated animate__fadeInUp animate__delay-1s mx-auto" style="max-width: 600px;">Everything you need to know about the Drivaro experience, from discovery to the open road.</p>
+        <p class="lead mb-0 opacity-75 animate__animated animate__fadeInUp animate__delay-1s mx-auto" style="max-width: 600px;">Everything you need to know about the Drivado experience, from discovery to the open road.</p>
     </div>
 </section>
 
@@ -79,9 +79,9 @@
     <div class="container py-5">
         <div class="row align-items-center g-5 flex-row-reverse">
             <div class="col-lg-6">
-                <span class="text-uppercase fw-bold text-secondary small letter-spacing-2">Partner with Drivaro</span>
+                <span class="text-uppercase fw-bold text-secondary small letter-spacing-2">Partner with Drivado</span>
                 <h2 class="section-title mb-4">Grow Your Rental Agency</h2>
-                <p class="text-secondary mb-5">Drivaro is more than a marketplace; it's a growth engine for your local business. Reach thousands of customers and manage your fleet with professional tools.</p>
+                <p class="text-secondary mb-5">Drivado is more than a marketplace; it's a growth engine for your local business. Reach thousands of customers and manage your fleet with professional tools.</p>
                 
                 <div class="row g-4">
                     <div class="col-md-6">
@@ -109,7 +109,7 @@
                         <div class="card border-0 p-4 rounded-4 shadow-sm h-100">
                             <i class="bi bi-star text-primary fs-2 mb-3"></i>
                             <h6 class="fw-bold mb-2">Verified Reputation</h6>
-                            <p class="small text-secondary mb-0">Build trust through our verified review system and gain the 'Drivaro Trusted' badge.</p>
+                            <p class="small text-secondary mb-0">Build trust through our verified review system and gain the 'Drivado Trusted' badge.</p>
                         </div>
                     </div>
                 </div>
@@ -174,7 +174,7 @@
                         </h2>
                         <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                             <div class="accordion-body text-secondary">
-                                Drivaro charges a transparent 10% commission on the booking subtotal. This fee covers platform protection, secure payment processing, and 24/7 customer support.
+                                Drivado charges a transparent 10% commission on the booking subtotal. This fee covers platform protection, secure payment processing, and 24/7 customer support.
                             </div>
                         </div>
                     </div>

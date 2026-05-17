@@ -1,59 +1,140 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚗 DRIVADO - Plateforme Premium de Location de Voitures
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel Version](https://img.shields.io/badge/Laravel-11.x-red.svg)](https://laravel.com)
+[![Vite](https://img.shields.io/badge/Vite-7.x-blueviolet.svg)](https://vitejs.dev)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-## About Laravel
+**DRIVADO** est une marketplace moderne, élégante et hautement sécurisée conçue pour connecter les agences de location de voitures locales avec des clients exigeants. Développée avec **Laravel 11**, **Vite** et **Bootstrap 5**, elle offre une expérience utilisateur haut de gamme dotée d'une esthétique sombre et d'animations fluides.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📖 Sommaire
+1. [Le Concept DRIVADO](#-le-concept-drivado)
+2. [Fonctionnalités Principales](#-fonctionnalités-principales)
+3. [Architecture & Stack Technique](#-architecture--stack-technique)
+4. [Guide d'Installation](#-guide-dinstallation)
+5. [Structure des Comptes de Test](#-structure-des-comptes-de-test)
+6. [Documentation Complémentaire](#-documentation-complémentaire)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 💡 Le Concept DRIVADO
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Dans le secteur de la location de voitures, les clients et les agences indépendantes font souvent face à des défis majeurs : manque de transparence sur les prix, processus de réservation laborieux et insécurité des transactions.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**DRIVADO** redéfinit cette expérience en proposant :
+* **Aux Clients :** Un catalogue exclusif de véhicules géolocalisés, des tarifs 100 % transparents sans frais cachés, et un système de réservation instantané et sécurisé par Stripe.
+* **Aux Agences :** Une vitrine digitale clé en main pour numériser leur flotte, toucher des milliers de clients, et gérer leur activité à l'aide d'un tableau de bord professionnel complet.
+* **Confiance & Sécurité :** Un système d'approbation administrative strict pour chaque agence partenaire avant la mise en ligne de ses véhicules.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## ✨ Fonctionnalités Principales
 
-### Premium Partners
+### 👤 Espace Client
+* **Recherche Avancée :** Filtrage multicritères par localisation (ville ou agence), catégorie de véhicule (SUV, Berline, Citadine, Luxe) et budget quotidien.
+* **Cartographie Interactive :** Visualisation géographique des véhicules disponibles sur une carte interactive (Leaflet/OpenStreetMap).
+* **Tunnel d'Achat Premium :** Réservation rapide avec calcul en temps réel de la durée et du prix total, intégrant les frais de plateforme.
+* **Suivi & Sécurité :** E-mail de confirmation détaillé et interface de suivi après paiement sécurisé.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 🏢 Espace Agence (Partenaire)
+* **Candidature en Ligne :** Formulaire d'inscription dédié récoltant les informations légales (ICE/SIRET, nom commercial, ville).
+* **Tableau de Bord Dédié :** Outil de gestion des véhicules, suivi des statistiques et revenus (10 % de commission prélevés par la plateforme).
+* **Gestion de Flotte :** Ajout, modification et suppression de véhicules avec gestion des options (transmission, climatisation, carburant, etc.).
 
-## Contributing
+### 👑 Espace Administration
+* **Gestion des Agences :** Interface d'examen des nouvelles agences candidates avec possibilité de validation ou de rejet.
+* **Statistiques Globales :** Suivi en temps réel du volume d'affaires, des commissions générées et du nombre total de locations actives.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 🛠️ Architecture & Stack Technique
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+La plateforme repose sur une architecture moderne assurant d'excellentes performances et une sécurité renforcée.
 
-## Security Vulnerabilities
+### 💻 Stack Frontend
+* **Moteur de Template :** Laravel Blade (pour un rendu serveur ultra-rapide).
+* **Framework CSS :** Bootstrap 5.3 (entièrement personnalisé avec un thème sombre luxueux et des effets de verre dépoli - *Glassmorphic*).
+* **Animations :** Animate.css pour des transitions de navigation fluides et élégantes.
+* **Cartes interactives :** LeafletJS pour le géoréférencement des flottes partenaires.
+* **Compilation des Assets :** Vite 7 (permettant un chargement instantané).
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### ⚙️ Stack Backend & Base de données
+* **Framework :** Laravel 11.x (PHP 8.2+).
+* **Base de données :** SQLite (configurable en PostgreSQL ou MySQL via le fichier `.env`).
+* **ORM :** Eloquent avec relations optimisées (`belongsTo`, `hasMany` avec préchargement Eager Loading).
+* **Passerelle de Paiement :** Stripe API (mode Sandbox pour les tests de réservation).
 
-## License
+### 🛡️ Sécurité & Middleware
+* **RoleMiddleware :** Restreint les accès aux zones réservées selon les rôles utilisateurs (`client`, `agency`, `admin`).
+* **ApprovedAgencyMiddleware :** Empêche les agences dont le dossier est "en attente" d'accéder au gestionnaire de flotte tant qu'elles ne sont pas validées par l'administrateur.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 🚀 Guide d'Installation
+
+Suivez ces étapes pour lancer l'application en local sur votre environnement de développement :
+
+### 1. Cloner le Projet
+```bash
+git clone <url-du-depot>
+cd drivado-codebase-v2
+```
+
+### 2. Configurer l'Environnement
+Copiez le fichier `.env.example` vers `.env` et générez la clé de sécurité :
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+### 3. Installer les Dépendances
+Installez les bibliothèques PHP (Composer) et Javascript (NPM) :
+```bash
+composer install
+npm install
+```
+
+### 4. Configurer la Base de Données
+Créez un fichier SQLite vide ou configurez votre serveur MySQL/PostgreSQL dans le fichier `.env`, puis exécutez les migrations et chargez le jeu d'essai (Seeders) :
+```bash
+# Pour SQLite (Windows PowerShell)
+New-Item -Path "database/database.sqlite" -ItemType "file"
+
+# Exécuter les migrations et injecter les fausses données
+php artisan migrate:fresh --seed
+```
+
+### 5. Compiler les Assets & Lancer le Serveur
+Lancez le compilateur frontend et démarrez le serveur PHP local :
+```bash
+# Compiler les assets pour la production
+npm run build
+
+# Démarrer le serveur de développement Laravel
+php artisan serve
+```
+L'application sera accessible sur `http://127.0.0.1:8000`.
+
+---
+
+## 🔑 Structure des Comptes de Test
+
+Les données de test pré-générées lors du `--seed` permettent de se connecter immédiatement à tous les types d'espaces :
+
+| Rôle | Adresse E-mail | Mot de passe | Rôle système |
+| :--- | :--- | :--- | :--- |
+| **Administrateur** | `admin@drivado.com` | `password` | Supervision globale et validation des agences |
+| **Agence Partenaire** | `agency@drivado.com` | `password` | Gestion de flotte de véhicules (déjà approuvée) |
+| **Client Standard** | `user@drivado.com` | `password` | Recherche et parcours de réservation classique |
+
+---
+
+## 📄 Documentation Complémentaire
+
+Pour une plongée en profondeur dans la structure du code source, la cinématique des paiements Stripe, les politiques de routage et le design system de l'application, veuillez consulter notre fichier de documentation technique :
+
+👉 **[DOCUMENTATION.md](file:///d:/Anas/Desktop/drivado%20codebase%20v2/DOCUMENTATION.md)**
+
+---
+*Développé dans le cadre du projet académique ENSAO MGSI-3. v1.0 Premium.*

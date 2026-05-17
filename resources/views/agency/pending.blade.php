@@ -12,23 +12,23 @@
                         </div>
                     </div>
                     
-                    <h2 class="fw-800 mb-3">Application Under Review</h2>
-                    <p class="text-secondary lead mb-5">Your agency account is currently being reviewed by our administration team. This process typically takes less than 24 hours.</p>
+                    <h2 class="fw-800 mb-3">Candidature en cours d'examen</h2>
+                    <p class="text-secondary lead mb-5">Votre compte d'agence est en cours d'examen par notre équipe administrative. Ce processus prend généralement moins de 24 heures.</p>
                     
                     <div class="p-4 bg-soft-gray rounded-4 mb-5 text-start">
-                        <h6 class="fw-bold mb-3 small text-uppercase letter-spacing-1">What's next?</h6>
+                        <h6 class="fw-bold mb-3 small text-uppercase letter-spacing-1">Et ensuite ?</h6>
                         <ul class="list-unstyled small text-secondary mb-0">
-                            <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> We verify your legal documentation.</li>
-                            <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> We confirm your business location in Oujda.</li>
-                            <li><i class="bi bi-check2-circle text-success me-2"></i> You'll receive full access to your dashboard.</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Nous vérifions vos documents légaux.</li>
+                            <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Nous confirmons l'emplacement de votre entreprise à Oujda.</li>
+                            <li><i class="bi bi-check2-circle text-success me-2"></i> Vous recevrez un accès complet à votre tableau de bord.</li>
                         </ul>
                     </div>
 
                     <div class="d-grid gap-3">
-                        <a href="{{ url('/') }}" class="btn btn-dark py-3 fw-bold rounded-pill">GO BACK HOME</a>
+                        <a href="{{ url('/') }}" class="btn btn-dark py-3 fw-bold rounded-pill">RETOUR À L'ACCUEIL</a>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-link text-secondary text-decoration-none small fw-bold">Sign out & Check later</button>
+                            <button type="submit" class="btn btn-link text-secondary text-decoration-none small fw-bold">Se déconnecter & vérifier plus tard</button>
                         </form>
                     </div>
                 </div>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DRIVADO - The premium car rental marketplace for luxury and daily drives.">
-    <title>{{ config('app.name', 'DRIVADO') }} | Premium Car Rental Marketplace</title>
+    <meta name="description" content="DRIVADO - La plateforme de location de voitures premium pour vos trajets quotidiens et de luxe.">
+    <title>{{ config('app.name', 'DRIVADO') }} | Location de Voitures Premium</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -36,53 +36,53 @@
                     @auth
                         @if(Auth::user()->role === 'admin')
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">Overview</a>
+                                <a class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">Aperçu</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('admin/agencies*') ? 'active' : '' }}" href="{{ route('admin.agencies') }}">Agencies</a>
+                                <a class="nav-link {{ Request::is('admin/agencies*') ? 'active' : '' }}" href="{{ route('admin.agencies') }}">Agences</a>
                             </li>
                             <li class="nav-item ms-lg-3">
-                                <a class="btn btn-outline-light btn-sm px-3 opacity-75" href="{{ url('/') }}">View Marketplace</a>
+                                <a class="btn btn-outline-light btn-sm px-3 opacity-75" href="{{ url('/') }}">Voir la Marketplace</a>
                             </li>
                         @elseif(Auth::user()->role === 'agency')
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('agency/dashboard') ? 'active' : '' }}" href="{{ route('agency.dashboard') }}">Dashboard</a>
+                                <a class="nav-link {{ Request::is('agency/dashboard') ? 'active' : '' }}" href="{{ route('agency.dashboard') }}">Tableau de bord</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('agency/vehicles*') ? 'active' : '' }}" href="{{ route('agency.vehicles') }}">My Fleet</a>
+                                <a class="nav-link {{ Request::is('agency/vehicles*') ? 'active' : '' }}" href="{{ route('agency.vehicles') }}">Ma Flotte</a>
                             </li>
                             <li class="nav-item ms-lg-3">
-                                <a class="btn btn-outline-light btn-sm px-3 opacity-75" href="{{ url('/') }}">View Marketplace</a>
+                                <a class="btn btn-outline-light btn-sm px-3 opacity-75" href="{{ url('/') }}">Voir la Marketplace</a>
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">Home</a>
+                                <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">Accueil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('search*') ? 'active' : '' }}" href="{{ url('/search') }}">Fleet</a>
+                                <a class="nav-link {{ Request::is('search*') ? 'active' : '' }}" href="{{ url('/search') }}">Flotte</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('how-it-works') ? 'active' : '' }}" href="{{ route('how-it-works') }}">How it Works</a>
+                                <a class="nav-link {{ Request::is('how-it-works') ? 'active' : '' }}" href="{{ route('how-it-works') }}">Comment ça marche</a>
                             </li>
                         @endif
                     @else
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">Home</a>
+                            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('search*') ? 'active' : '' }}" href="{{ url('/search') }}">Fleet</a>
+                            <a class="nav-link {{ Request::is('search*') ? 'active' : '' }}" href="{{ url('/search') }}">Flotte</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('how-it-works') ? 'active' : '' }}" href="{{ route('how-it-works') }}">How it Works</a>
+                            <a class="nav-link {{ Request::is('how-it-works') ? 'active' : '' }}" href="{{ route('how-it-works') }}">Comment ça marche</a>
                         </li>
                     @endauth
 
                     @guest
                         <li class="nav-item ms-lg-4">
-                            <a class="nav-link" href="{{ route('login') }}">Sign In</a>
+                            <a class="nav-link" href="{{ route('login') }}">Se connecter</a>
                         </li>
                         <li class="nav-item ms-lg-2">
-                            <a class="btn btn-premium px-4" href="{{ route('register') }}">Join Drivado</a>
+                            <a class="btn btn-premium px-4" href="{{ route('register') }}">Rejoindre Drivado</a>
                         </li>
                     @else
                         <li class="nav-item dropdown ms-lg-4">
@@ -93,19 +93,19 @@
                             <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-4 mt-3">
                                 <li>
                                     @if(Auth::user()->role === 'admin')
-                                        <a class="dropdown-item py-2" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+                                        <a class="dropdown-item py-2" href="{{ route('admin.dashboard') }}">Tableau de bord Admin</a>
                                     @elseif(Auth::user()->role === 'agency')
-                                        <a class="dropdown-item py-2" href="{{ route('agency.dashboard') }}">Agency Dashboard</a>
+                                        <a class="dropdown-item py-2" href="{{ route('agency.dashboard') }}">Tableau de bord Agence</a>
                                     @else
-                                        <a class="dropdown-item py-2" href="#">My Bookings</a>
+                                        <a class="dropdown-item py-2" href="#">Mes Réservations</a>
                                     @endif
                                 </li>
-                                <li><a class="dropdown-item py-2" href="#">Settings</a></li>
+                                <li><a class="dropdown-item py-2" href="#">Paramètres</a></li>
                                 <li><hr class="dropdown-divider opacity-50"></li>
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
-                                        <button type="submit" class="dropdown-item py-2 text-danger">Sign Out</button>
+                                        <button type="submit" class="dropdown-item py-2 text-danger">Se déconnecter</button>
                                     </form>
                                 </li>
                             </ul>
@@ -132,7 +132,7 @@
                             <span class="logo-text-footer">DRIVADO</span>
                         </div>
                     </div>
-                    <p class="text-secondary mb-4">DRIVADO is the leading marketplace for car rental agencies and users to connect in a secure, professional, and transparent environment.</p>
+                    <p class="text-secondary mb-4">DRIVADO est la première plateforme de mise en relation entre agences de location de voitures et particuliers, dans un environnement sécurisé, professionnel et transparent.</p>
                     <div class="d-flex gap-3">
                         <a href="#" class="btn btn-outline-light btn-sm rounded-circle p-2"><i class="bi bi-facebook fs-5"></i></a>
                         <a href="#" class="btn btn-outline-light btn-sm rounded-circle p-2"><i class="bi bi-instagram fs-5"></i></a>
@@ -141,27 +141,27 @@
                 </div>
                 <div class="col-lg-2 offset-lg-1">
                     <h6 class="text-white fw-bold mb-4">Marketplace</h6>
-                    <a href="{{ url('/search') }}" class="footer-link">Browse Fleet</a>
-                    <a href="#" class="footer-link">Special Offers</a>
-                    <a href="#" class="footer-link">Verified Agencies</a>
-                    <a href="#" class="footer-link">Safety & Insurance</a>
+                    <a href="{{ url('/search') }}" class="footer-link">Parcourir la Flotte</a>
+                    <a href="#" class="footer-link">Offres Spéciales</a>
+                    <a href="#" class="footer-link">Agences Vérifiées</a>
+                    <a href="#" class="footer-link">Sécurité & Assurance</a>
                 </div>
                 <div class="col-lg-2">
-                    <h6 class="text-white fw-bold mb-4">Company</h6>
-                    <a href="#" class="footer-link">About Us</a>
-                    <a href="#" class="footer-link">Privacy Policy</a>
-                    <a href="#" class="footer-link">Terms of Service</a>
-                    <a href="#" class="footer-link">Contact Support</a>
+                    <h6 class="text-white fw-bold mb-4">Entreprise</h6>
+                    <a href="#" class="footer-link">À propos de nous</a>
+                    <a href="#" class="footer-link">Politique de confidentialité</a>
+                    <a href="#" class="footer-link">Conditions d'utilisation</a>
+                    <a href="#" class="footer-link">Contacter le Support</a>
                 </div>
                 <div class="col-lg-3">
-                    <h6 class="text-white fw-bold mb-4">Partner with Us</h6>
-                    <p class="text-secondary small mb-4">Are you a car rental agency? Reach thousands of customers by joining our platform.</p>
-                    <a href="{{ route('register') }}" class="btn btn-outline-light w-100 fw-bold">REGISTER AGENCY</a>
+                    <h6 class="text-white fw-bold mb-4">Devenir Partenaire</h6>
+                    <p class="text-secondary small mb-4">Êtes-vous une agence de location de voitures ? Touchez des milliers de clients en rejoignant notre plateforme.</p>
+                    <a href="{{ route('register') }}" class="btn btn-outline-light w-100 fw-bold">ENREGISTRER L'AGENCE</a>
                 </div>
             </div>
             <hr class="my-5 opacity-10">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-secondary small">
-                <p class="mb-0">&copy; {{ date('Y') }} DRIVADO Platform. All rights reserved.</p>
+                <p class="mb-0">&copy; {{ date('Y') }} Plateforme DRIVADO. Tous droits réservés.</p>
                 <div class="mt-3 mt-md-0">
                     <span class="me-3">ENSAO MGSI-3 Project</span>
                     <span>v1.0 Premium</span>

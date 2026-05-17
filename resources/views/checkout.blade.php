@@ -4,12 +4,12 @@
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-10">
-            <h3 class="fw-bold mb-4">Review & Confirm Booking</h3>
+            <h3 class="fw-bold mb-4">Vérifier & Confirmer la Réservation</h3>
             
             <div class="row g-4">
                 <div class="col-lg-8">
                     <div class="card border-0 shadow-sm p-4 mb-4">
-                        <h5 class="fw-bold mb-4">Booking Summary</h5>
+                        <h5 class="fw-bold mb-4">Résumé de la Réservation</h5>
                         <div class="d-flex align-items-center mb-4">
                             <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=150" class="rounded me-3" alt="">
                             <div>
@@ -20,35 +20,35 @@
 
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <p class="text-secondary small fw-bold text-uppercase mb-1">Pickup</p>
+                                <p class="text-secondary small fw-bold text-uppercase mb-1">Départ</p>
                                 <p class="fw-bold mb-0">{{ $booking_data['start_date'] }}</p>
                             </div>
                             <div class="col-md-6">
-                                <p class="text-secondary small fw-bold text-uppercase mb-1">Return</p>
+                                <p class="text-secondary small fw-bold text-uppercase mb-1">Retour</p>
                                 <p class="fw-bold mb-0">{{ $booking_data['end_date'] }}</p>
                             </div>
                             <div class="col-md-6">
-                                <p class="text-secondary small fw-bold text-uppercase mb-1">Duration</p>
-                                <p class="fw-bold mb-0">{{ $booking_data['days'] }} Days</p>
+                                <p class="text-secondary small fw-bold text-uppercase mb-1">Durée</p>
+                                <p class="fw-bold mb-0">{{ $booking_data['days'] }} Jours</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="card border-0 shadow-sm p-4">
-                        <h5 class="fw-bold mb-4">Cancellation Policy</h5>
+                        <h5 class="fw-bold mb-4">Conditions d'Annulation</h5>
                         <p class="text-secondary">{{ $vehicle->cancellation_policy }}</p>
                     </div>
                 </div>
 
                 <div class="col-lg-4">
                     <div class="card border-0 shadow-sm p-4">
-                        <h5 class="fw-bold mb-4">Price Details</h5>
+                        <h5 class="fw-bold mb-4">Détails du Prix</h5>
                         <div class="d-flex justify-content-between mb-2">
-                            <span>{{ $booking_data['days'] }} Days &times; {{ $vehicle->price_per_day }} MAD</span>
+                            <span>{{ $booking_data['days'] }} Jours &times; {{ $vehicle->price_per_day }} MAD</span>
                             <span>{{ $booking_data['subtotal'] }} MAD</span>
                         </div>
                         <div class="d-flex justify-content-between mb-2 text-secondary small">
-                            <span>Platform Fee ({{ $booking_data['commission_rate'] }}%)</span>
+                            <span>Frais de plateforme ({{ $booking_data['commission_rate'] }}%)</span>
                             <span>{{ $booking_data['commission_amount'] }} MAD</span>
                         </div>
                         <hr>
@@ -69,11 +69,11 @@
                             <input type="hidden" name="commission_amount" value="{{ $booking_data['commission_amount'] }}">
                             <input type="hidden" name="total" value="{{ $booking_data['total'] }}">
 
-                            <button type="submit" class="btn btn-dark w-100 fw-bold py-3">CONFIRM & PAY</button>
+                            <button type="submit" class="btn btn-dark w-100 fw-bold py-3">CONFIRMER & PAYER</button>
                         </form>
                         
                         <p class="text-center text-secondary small mt-3">
-                            <i class="bi bi-shield-lock me-1"></i> Secure Payment by Stripe
+                            <i class="bi bi-shield-lock me-1"></i> Paiement Sécurisé par Stripe
                         </p>
                     </div>
                 </div>

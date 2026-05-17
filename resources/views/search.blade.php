@@ -6,16 +6,16 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-8">
-                <h1 class="fw-800 display-5 mb-2">Explore Our Fleet</h1>
-                <p class="opacity-75 lead mb-0">Discover the perfect vehicle for your next journey in Oujda.</p>
+                <h1 class="fw-800 display-5 mb-2">Explorez Notre Flotte</h1>
+                <p class="opacity-75 lead mb-0">Découvrez le véhicule parfait pour votre prochain voyage à Oujda.</p>
             </div>
             <div class="col-md-4 text-md-end mt-4 mt-md-0">
                 <div class="btn-group p-1 bg-white bg-opacity-10 rounded-pill">
                     <button class="btn btn-premium rounded-pill px-4 active" id="btn-grid-view">
-                        <i class="bi bi-grid-fill me-2"></i> GRID
+                        <i class="bi bi-grid-fill me-2"></i> GRILLE
                     </button>
                     <button class="btn btn-outline-light border-0 rounded-pill px-4" id="btn-map-view">
-                        <i class="bi bi-map-fill me-2"></i> MAP
+                        <i class="bi bi-map-fill me-2"></i> CARTE
                     </button>
                 </div>
             </div>
@@ -34,29 +34,29 @@
         <div class="col-lg-3">
             <div class="filter-sidebar card border-0 shadow-sm p-4 sticky-top" style="top: 100px; z-index: 10; border-radius: 20px;">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h5 class="fw-bold mb-0">Filters</h5>
-                    <a href="{{ url('/search') }}" class="text-secondary small text-decoration-none">Reset</a>
+                    <h5 class="fw-bold mb-0">Filtres</h5>
+                    <a href="{{ url('/search') }}" class="text-secondary small text-decoration-none">Réinitialiser</a>
                 </div>
                 
                 <form action="{{ url('/search') }}" method="GET">
                     <div class="mb-4">
-                        <label class="form-label fw-bold small text-uppercase mb-3">Location</label>
-                        <input type="text" name="location" class="form-control border-0 bg-light rounded-3" value="{{ request('location') }}" placeholder="City or Agency">
+                        <label class="form-label fw-bold small text-uppercase mb-3">Localisation</label>
+                        <input type="text" name="location" class="form-control border-0 bg-light rounded-3" value="{{ request('location') }}" placeholder="Ville ou Agence">
                     </div>
 
                     <div class="mb-4">
-                        <label class="form-label fw-bold small text-uppercase mb-3">Category</label>
+                        <label class="form-label fw-bold small text-uppercase mb-3">Catégorie</label>
                         <select name="category" class="form-select border-0 bg-light rounded-3" onchange="this.form.submit()">
-                            <option value="">All Categories</option>
+                            <option value="">Toutes les catégories</option>
                             <option value="suv" {{ request('category') == 'suv' ? 'selected' : '' }}>SUV</option>
-                            <option value="sedan" {{ request('category') == 'sedan' ? 'selected' : '' }}>Sedan</option>
-                            <option value="city" {{ request('category') == 'city' ? 'selected' : '' }}>City Car</option>
-                            <option value="luxury" {{ request('category') == 'luxury' ? 'selected' : '' }}>Luxury</option>
+                            <option value="sedan" {{ request('category') == 'sedan' ? 'selected' : '' }}>Berline</option>
+                            <option value="city" {{ request('category') == 'city' ? 'selected' : '' }}>Citadine</option>
+                            <option value="luxury" {{ request('category') == 'luxury' ? 'selected' : '' }}>Luxe</option>
                         </select>
                     </div>
 
                     <div class="mb-4">
-                        <label class="form-label fw-bold small text-uppercase mb-3">Daily Budget</label>
+                        <label class="form-label fw-bold small text-uppercase mb-3">Budget Quotidien</label>
                         <div class="d-flex gap-2 align-items-center">
                             <input type="number" name="min_price" class="form-control border-0 bg-light rounded-3" placeholder="Min" value="{{ request('min_price') }}">
                             <span class="text-secondary">-</span>
@@ -64,12 +64,12 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-dark w-100 fw-bold py-3">APPLY FILTERS</button>
+                    <button type="submit" class="btn btn-dark w-100 fw-bold py-3">APPLIQUER LES FILTRES</button>
                 </form>
 
                 <!-- Small Info Card -->
                 <div class="mt-4 p-3 bg-soft-gray rounded-4 border">
-                    <p class="small text-secondary mb-0"><i class="bi bi-info-circle me-2"></i> All prices include platform protection and basic insurance.</p>
+                    <p class="small text-secondary mb-0"><i class="bi bi-info-circle me-2"></i> Tous les tarifs incluent la protection de la plateforme et l'assurance de base.</p>
                 </div>
             </div>
         </div>
@@ -77,15 +77,15 @@
         <!-- Search Results -->
         <div class="col-lg-9">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h4 class="fw-bold mb-0">{{ $vehicles->total() }} Vehicles Available</h4>
+                <h4 class="fw-bold mb-0">{{ $vehicles->total() }} Véhicules Disponibles</h4>
                 <div class="dropdown">
                     <button class="btn btn-white border-0 shadow-sm rounded-pill px-4 dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        Sort by: Newest
+                        Trier par : Nouveautés
                     </button>
                     <ul class="dropdown-menu border-0 shadow-lg">
-                        <li><a class="dropdown-item" href="#">Price: Low to High</a></li>
-                        <li><a class="dropdown-item" href="#">Price: High to Low</a></li>
-                        <li><a class="dropdown-item" href="#">Newest First</a></li>
+                        <li><a class="dropdown-item" href="#">Prix : Du moins cher au plus cher</a></li>
+                        <li><a class="dropdown-item" href="#">Prix : Du plus cher au moins cher</a></li>
+                        <li><a class="dropdown-item" href="#">Les plus récents en premier</a></li>
                     </ul>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                             <div class="card-img-wrapper">
                                 <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=800" alt="...">
                                 <div class="price-tag">
-                                    {{ number_format($vehicle->price_per_day, 0) }} MAD <span class="small opacity-75 fw-normal">/ day</span>
+                                    {{ number_format($vehicle->price_per_day, 0) }} MAD <span class="small opacity-75 fw-normal">/ jour</span>
                                 </div>
                             </div>
                             <div class="p-4">
@@ -106,7 +106,7 @@
                                 <p class="text-secondary small mb-3"><i class="bi bi-shop me-1"></i> {{ $vehicle->agency->agency_name }}</p>
                                 
                                 <div class="d-flex gap-2">
-                                    <a href="{{ url('/vehicle/'.$vehicle->id) }}" class="btn btn-dark w-100 fw-bold py-2 stretched-link">DETAILS</a>
+                                    <a href="{{ url('/vehicle/'.$vehicle->id) }}" class="btn btn-dark w-100 fw-bold py-2 stretched-link">DÉTAILS</a>
                                 </div>
                             </div>
                         </div>
@@ -114,9 +114,9 @@
                 @empty
                     <div class="col-12 text-center py-5">
                         <img src="https://illustrations.popsy.co/white/car-service.svg" alt="No results" style="height: 200px;" class="mb-4">
-                        <h4 class="fw-bold">No results found</h4>
-                        <p class="text-secondary mb-4">Try adjusting your filters to see more vehicles.</p>
-                        <a href="{{ url('/search') }}" class="btn btn-dark fw-bold px-4">CLEAR ALL FILTERS</a>
+                        <h4 class="fw-bold">Aucun résultat trouvé</h4>
+                        <p class="text-secondary mb-4">Essayez d'ajuster vos filtres pour voir d'autres véhicules.</p>
+                        <a href="{{ url('/search') }}" class="btn btn-dark fw-bold px-4">EFFACER TOUS LES FILTRES</a>
                     </div>
                 @endforelse
             </div>
@@ -171,7 +171,7 @@
                                 <div class="text-center p-2">
                                     <h6 class="fw-bold mb-1">{{ $vehicle->make }} {{ $vehicle->model }}</h6>
                                     <p class="small text-secondary mb-2">{{ $vehicle->agency->agency_name }}</p>
-                                    <a href="{{ url('/vehicle/'.$vehicle->id) }}" class="btn btn-dark btn-sm fw-bold px-3">BOOK NOW</a>
+                                    <a href="{{ url('/vehicle/'.$vehicle->id) }}" class="btn btn-dark btn-sm fw-bold px-3">RÉSERVER</a>
                                 </div>
                             `);
                     @endif

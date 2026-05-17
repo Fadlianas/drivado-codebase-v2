@@ -134,7 +134,7 @@ Les données de test pré-générées lors du `--seed` permettent de se connecte
 
 Pour une plongée en profondeur dans la structure du code source, la cinématique des paiements Stripe, les politiques de routage et le design system de l'application, veuillez consulter notre fichier de documentation technique :
 
-👉 **[DOCUMENTATION.md](file:///d:/Anas/Desktop/drivado%20codebase%20v2/DOCUMENTATION.md)**
+👉 **[DOCUMENTATION.md](./DOCUMENTATION.md)**
 
 ---
 *Développé dans le cadre du projet académique ENSAO MGSI-3. v1.0 Premium.*

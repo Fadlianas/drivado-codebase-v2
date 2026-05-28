@@ -1,10 +1,10 @@
 # 🚗 DRIVADO - Plateforme Premium de Location de Voitures
 
-[![Laravel Version](https://img.shields.io/badge/Laravel-11.x-red.svg)](https://laravel.com)
+[![Laravel Version](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com)
 [![Vite](https://img.shields.io/badge/Vite-7.x-blueviolet.svg)](https://vitejs.dev)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-**DRIVADO** est une marketplace moderne, élégante et hautement sécurisée conçue pour connecter les agences de location de voitures locales avec des clients exigeants. Développée avec **Laravel 11**, **Vite** et **Bootstrap 5**, elle offre une expérience utilisateur haut de gamme dotée d'une esthétique sombre et d'animations fluides.
+**DRIVADO** est une marketplace moderne, élégante et hautement sécurisée conçue pour connecter les agences de location de voitures locales avec des clients exigeants. Développée avec **Laravel 12**, **Vite** et **Bootstrap 5**, elle offre une expérience utilisateur haut de gamme dotée d'une esthétique sombre et d'animations fluides.
 
 ---
 
@@ -60,8 +60,8 @@ La plateforme repose sur une architecture moderne assurant d'excellentes perform
 * **Compilation des Assets :** Vite 7 (permettant un chargement instantané).
 
 ### ⚙️ Stack Backend & Base de données
-* **Framework :** Laravel 11.x (PHP 8.2+).
-* **Base de données :** SQLite (configurable en PostgreSQL ou MySQL via le fichier `.env`).
+* **Framework :** Laravel 12.x (PHP 8.2+).
+* **Base de données :** MySQL via le fichier `.env`.
 * **ORM :** Eloquent avec relations optimisées (`belongsTo`, `hasMany` avec préchargement Eager Loading).
 * **Passerelle de Paiement :** Stripe API (mode Sandbox pour les tests de réservation).
 
@@ -96,11 +96,8 @@ npm install
 ```
 
 ### 4. Configurer la Base de Données
-Créez un fichier SQLite vide ou configurez votre serveur MySQL/PostgreSQL dans le fichier `.env`, puis exécutez les migrations et chargez le jeu d'essai (Seeders) :
+Créez une base de données MySQL nommée `drivado`, vérifiez les identifiants dans le fichier `.env`, puis exécutez les migrations et chargez le jeu d'essai (Seeders) :
 ```bash
-# Pour SQLite (Windows PowerShell)
-New-Item -Path "database/database.sqlite" -ItemType "file"
-
 # Exécuter les migrations et injecter les fausses données
 php artisan migrate:fresh --seed
 ```

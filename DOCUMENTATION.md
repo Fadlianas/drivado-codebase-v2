@@ -104,7 +104,7 @@ Ce contrôleur orchestre le cycle de vie de la session utilisateur et le routage
   }
   return redirect('/');
   ```
-* **Inscription Hybride :** Si le formulaire sélectionné possède le rôle `agency`, le contrôleur effectue simultanément la création de l'utilisateur principal et de la fiche agence associée (`is_approved = false` par défaut). Il utilise une transaction de base de données pour garantir l'intégrité de la création双 (double enregistrement).
+* **Inscription Hybride :** Si le formulaire sélectionné possède le rôle `agency`, le contrôleur effectue simultanément la création de l'utilisateur principal et de la fiche agence associée (`status = pending` par défaut). Il utilise une transaction de base de données pour garantir l'intégrité de la création du compte et du profil agence.
 
 ### 🚗 [BookingController.php](file:///d:/Anas/Desktop/drivado%20codebase%20v2/app/Http/Controllers/BookingController.php)
 Il prend en charge le moteur de recherche et le calcul dynamique des prix du tunnel de vente :

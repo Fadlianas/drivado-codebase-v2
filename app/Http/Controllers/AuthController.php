@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Agency;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
@@ -45,39 +46,40 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'phone' => ['required', 'string', 'max:20'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role' => ['required', 'in:user,agency'],
+            'agency_name' => ['required_if:role,agency', 'nullable', 'string', 'max:255'],
+            'legal_id' => ['required_if:role,agency', 'nullable', 'string', 'max:255'],
+            'city' => ['required_if:role,agency', 'nullable', 'string', 'max:255'],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => Hash::make($request->password),
-            'role' => $request->role,
-        ]);
-
-        if ($request->role === 'agency') {
-            $request->validate([
-                'agency_name' => ['required', 'string', 'max:255'],
-                'legal_id' => ['required', 'string', 'max:255'],
-                'city' => ['required', 'string', 'max:255'],
+        $user = DB::transaction(function () use ($validated) {
+            $user = User::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'phone' => $validated['phone'],
+                'password' => Hash::make($validated['password']),
+                'role' => $validated['role'],
             ]);
 
-            Agency::create([
-                'user_id' => $user->id,
-                'agency_name' => $request->agency_name,
-                'legal_id' => $request->legal_id,
-                'city' => $request->city,
-                'phone' => $request->phone,
-                'address' => '', // Will be updated later
-                'status' => 'pending',
-            ]);
-        }
+            if ($validated['role'] === 'agency') {
+                Agency::create([
+                    'user_id' => $user->id,
+                    'agency_name' => $validated['agency_name'],
+                    'legal_id' => $validated['legal_id'],
+                    'city' => $validated['city'],
+                    'phone' => $validated['phone'],
+                    'address' => '',
+                    'status' => 'pending',
+                ]);
+            }
+
+            return $user;
+        });
 
         Auth::login($user);
         

@@ -60,14 +60,8 @@
                         <form action="{{ route('booking.confirm') }}" method="POST">
                             @csrf
                             <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
-                            <input type="hidden" name="agency_id" value="{{ $vehicle->agency->id }}">
                             <input type="hidden" name="start_date" value="{{ $booking_data['start_date'] }}">
                             <input type="hidden" name="end_date" value="{{ $booking_data['end_date'] }}">
-                            <input type="hidden" name="days" value="{{ $booking_data['days'] }}">
-                            <input type="hidden" name="subtotal" value="{{ $booking_data['subtotal'] }}">
-                            <input type="hidden" name="commission_rate" value="{{ $booking_data['commission_rate'] }}">
-                            <input type="hidden" name="commission_amount" value="{{ $booking_data['commission_amount'] }}">
-                            <input type="hidden" name="total" value="{{ $booking_data['total'] }}">
 
                             <button type="submit" class="btn btn-dark w-100 fw-bold py-3">CONFIRMER & PAYER</button>
                         </form>

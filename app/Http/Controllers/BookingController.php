@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vehicle;
-use App\Models\Agency;
+use App\Models\Booking;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -51,45 +52,44 @@ class BookingController extends Controller
 
         $vehicle = Vehicle::with('agency')->findOrFail($request->vehicle_id);
         
-        $start = \Carbon\Carbon::parse($request->start_date);
-        $end = \Carbon\Carbon::parse($request->end_date);
-        $days = $start->diffInDays($end);
-        
-        $subtotal = $days * $vehicle->price_per_day;
-        $commission_rate = config('app.commission_rate', 10);
-        $commission_amount = ($subtotal * $commission_rate) / 100;
-        $total = $subtotal + $commission_amount;
+        $booking_data = $this->calculateBookingData(
+            $vehicle,
+            $request->start_date,
+            $request->end_date
+        );
 
-        $booking_data = [
-            'vehicle_id' => $vehicle->id,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'days' => $days,
-            'subtotal' => $subtotal,
-            'commission_rate' => $commission_rate,
-            'commission_amount' => $commission_amount,
-            'total' => $total,
-        ];
+        $booking_data['vehicle_id'] = $vehicle->id;
 
         return view('checkout', compact('vehicle', 'booking_data'));
     }
 
     public function confirm(Request $request)
     {
-        // This would normally integrate with Stripe here
-        // For now, we'll create the booking as 'confirmed' to simulate success
-        
-        $booking = \App\Models\Booking::create([
+        $request->validate([
+            'vehicle_id' => 'required|exists:vehicles,id',
+            'start_date' => 'required|date|after_or_equal:today',
+            'end_date' => 'required|date|after:start_date',
+        ]);
+
+        $vehicle = Vehicle::with('agency')->where('is_available', true)->findOrFail($request->vehicle_id);
+        $booking_data = $this->calculateBookingData(
+            $vehicle,
+            $request->start_date,
+            $request->end_date
+        );
+
+        // Payment is simulated for the academic demo; all financial fields are still server-calculated.
+        $booking = Booking::create([
             'user_id' => auth()->id(),
-            'vehicle_id' => $request->vehicle_id,
-            'agency_id' => $request->agency_id,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'total_days' => $request->days,
-            'subtotal' => $request->subtotal,
-            'commission_rate' => $request->commission_rate,
-            'commission_amount' => $request->commission_amount,
-            'total_amount' => $request->total,
+            'vehicle_id' => $vehicle->id,
+            'agency_id' => $vehicle->agency_id,
+            'start_date' => $booking_data['start_date'],
+            'end_date' => $booking_data['end_date'],
+            'total_days' => $booking_data['days'],
+            'subtotal' => $booking_data['subtotal'],
+            'commission_rate' => $booking_data['commission_rate'],
+            'commission_amount' => $booking_data['commission_amount'],
+            'total_amount' => $booking_data['total'],
             'status' => 'confirmed',
         ]);
 
@@ -98,7 +98,36 @@ class BookingController extends Controller
 
     public function success($id)
     {
-        $booking = \App\Models\Booking::with(['vehicle', 'agency'])->findOrFail($id);
+        $booking = Booking::with(['vehicle', 'agency'])->findOrFail($id);
+        $user = auth()->user();
+
+        abort_unless(
+            $booking->user_id === $user->id ||
+            $user->role === 'admin' ||
+            ($user->role === 'agency' && $user->agency?->id === $booking->agency_id),
+            403
+        );
+
         return view('success', compact('booking'));
+    }
+
+    private function calculateBookingData(Vehicle $vehicle, string $startDate, string $endDate): array
+    {
+        $start = Carbon::parse($startDate);
+        $end = Carbon::parse($endDate);
+        $days = (int) $start->diffInDays($end);
+        $subtotal = $days * $vehicle->price_per_day;
+        $commission_rate = config('app.commission_rate', 10);
+        $commission_amount = ($subtotal * $commission_rate) / 100;
+
+        return [
+            'start_date' => $start->toDateString(),
+            'end_date' => $end->toDateString(),
+            'days' => $days,
+            'subtotal' => $subtotal,
+            'commission_rate' => $commission_rate,
+            'commission_amount' => $commission_amount,
+            'total' => $subtotal + $commission_amount,
+        ];
     }
 }

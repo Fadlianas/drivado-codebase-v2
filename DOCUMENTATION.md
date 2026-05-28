@@ -86,6 +86,7 @@ Toutes les URL de l'application sont déclarées dans [routes/web.php](file:///d
 | `GET` | `/admin/dashboard` | `AdminController@dashboard` | Admin | Synthèse globale des ventes & commissions globales |
 | `GET` | `/admin/agencies` | `AdminController@agencies` | Admin | Modération administrative des dossiers d'agences |
 | `PATCH`| `/admin/agencies/{id}/approve` | `AdminController@approveAgency`| Admin | Validation légale de l'agence candidate |
+| `PATCH`| `/admin/agencies/{id}/reject` | `AdminController@rejectAgency`| Admin | Rejet administratif de l'agence candidate |
 
 ---
 
@@ -127,6 +128,8 @@ Il prend en charge le moteur de recherche et le calcul dynamique des prix du tun
   $commission_amount = ($subtotal * $commission_rate) / 100;
   $total = $subtotal + $commission_amount;
   ```
+* **Confirmation sécurisée :** La méthode `confirm` ne fait pas confiance aux montants envoyés par le navigateur. Elle recharge le véhicule depuis MySQL, recalcule la durée, le sous-total, la commission et le total, puis utilise l'agence liée au véhicule. Cette approche empêche un utilisateur de modifier les champs cachés du formulaire pour changer le prix.
+* **Protection des réservations :** La méthode `success` vérifie que l'utilisateur connecté est le propriétaire de la réservation, un administrateur, ou l'agence concernée avant d'afficher les détails.
 
 ---
 
@@ -165,7 +168,7 @@ Représente le catalogue de voitures mis en location.
 * `make` : `VARCHAR(255)` (Marque, ex: *Mercedes-Benz*)
 * `model` : `VARCHAR(255)` (Modèle, ex: *Classe G*)
 * `year` : `YEAR`
-* `category` : `ENUM('suv', 'sedan', 'city', 'luxury')`
+* `category` : `ENUM('suv', 'sedan', 'city', 'utility', 'luxury')`
 * `description` : `TEXT`
 * `price_per_day` : `DECIMAL(10, 2)` (Tarif journalier)
 * `options` : `JSON` (Stocké sous forme de tableau JSON, ex: `["Automatique", "GPS", "Sièges Cuir"]`)
@@ -186,7 +189,7 @@ Historique financier de toutes les locations passées sur la plateforme.
 * `commission_rate` : `DECIMAL(5, 2)` (Pourcentage de frais de plateforme, défaut : 10.00 %)
 * `commission_amount` : `DECIMAL(10, 2)` (Frais prélevés par la plateforme)
 * `total_amount` : `DECIMAL(10, 2)` (Montant net facturé au client)
-* `status` : `ENUM('pending', 'confirmed', 'completed', 'cancelled')` (Défaut : `pending`)
+* `status` : `ENUM('pending', 'confirmed', 'completed', 'cancelled', 'failed')` (Défaut : `pending`)
 * `timestamps`
 
 ---
@@ -230,7 +233,7 @@ sequenceDiagram
     autonumber
     actor Client
     participant Plateforme
-    participant Stripe
+    participant Paiement
     participant BDD
 
     Client->>Plateforme: Sélectionne un véhicule & choisit les dates
@@ -238,11 +241,14 @@ sequenceDiagram
     Plateforme->>Plateforme: Calcule les tarifs (Sous-total, Commission, Total)
     Plateforme-->>Client: Affiche le récapitulatif financier (Checkout)
     Client->>Plateforme: Clique sur "Confirmer & Payer"
-    Plateforme->>Stripe: Initialise la transaction bancaire sécurisée
-    Stripe-->>Plateforme: Confirme le succès de la transaction
+    Plateforme->>Plateforme: Recharge le véhicule et recalcule les montants côté serveur
+    Plateforme->>Paiement: Simulation de paiement pour la démonstration académique
+    Paiement-->>Plateforme: Succès simulé
     Plateforme->>BDD: Crée l'enregistrement dans la table 'bookings' (status = 'confirmed')
     Plateforme-->>Client: Redirige vers /booking/success/{id} avec e-mail de confirmation
 ```
+
+> Note : le package Stripe est installé et la documentation prévoit l'intégration d'une passerelle réelle, mais le projet actuel simule le paiement afin de rester simple pour la démonstration.
 
 ---
 

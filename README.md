@@ -96,7 +96,16 @@ npm install
 ```
 
 ### 4. Configurer la Base de Données
-Créez une base de données MySQL nommée `drivado`, vérifiez les identifiants dans le fichier `.env`, puis exécutez les migrations et chargez le jeu d'essai (Seeders) :
+Avant de lancer Laravel, démarrez **MySQL** depuis le panneau de contrôle **XAMPP**. Créez ensuite une base de données MySQL nommée `drivado`, vérifiez les identifiants dans le fichier `.env`, puis exécutez les migrations et chargez le jeu d'essai (Seeders) :
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=drivado
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
 ```bash
 # Exécuter les migrations et injecter les fausses données
 php artisan migrate:fresh --seed
@@ -113,6 +122,8 @@ php artisan serve
 ```
 L'application sera accessible sur `http://127.0.0.1:8000`.
 
+> Important : à chaque nouvelle session de travail, démarrez MySQL dans XAMPP avant `php artisan serve`, sinon Laravel ne pourra pas se connecter à la base de données.
+
 ---
 
 ## 🔑 Structure des Comptes de Test
@@ -122,8 +133,22 @@ Les données de test pré-générées lors du `--seed` permettent de se connecte
 | Rôle | Adresse E-mail | Mot de passe | Rôle système |
 | :--- | :--- | :--- | :--- |
 | **Administrateur** | `admin@drivado.com` | `password` | Supervision globale et validation des agences |
-| **Agence Partenaire** | `agency@drivado.com` | `password` | Gestion de flotte de véhicules (déjà approuvée) |
-| **Client Standard** | `user@drivado.com` | `password` | Recherche et parcours de réservation classique |
+| **Agence Partenaire** | `agency1@example.com` | `password` | Gestion de flotte de véhicules (déjà approuvée) |
+| **Agence Partenaire** | `agency2@example.com` | `password` | Deuxième agence de test |
+| **Client Standard** | `john@example.com` | `password` | Recherche et parcours de réservation classique |
+| **Client Standard** | `jane@example.com` | `password` | Deuxième client de test |
+
+---
+
+## Sécurité & Qualité Backend
+
+Les contrôles principaux côté serveur sont les suivants :
+* Les mots de passe sont hashés avec Laravel (`Hash` / cast `hashed`).
+* Les routes sensibles sont protégées par `auth`, `RoleMiddleware` et `ApprovedAgencyMiddleware`.
+* Les formulaires POST/PATCH utilisent les tokens CSRF de Laravel.
+* La confirmation de réservation recalcule le prix, la commission, l'agence et la durée côté serveur afin d'éviter la modification des champs cachés.
+* La page de succès d'une réservation vérifie que l'utilisateur connecté est bien propriétaire de la réservation, administrateur, ou agence concernée.
+* Les tests automatisés vérifient le chargement de l'accueil, la protection contre la modification frauduleuse du prix et l'interdiction de consulter la réservation d'un autre utilisateur.
 
 ---
 
